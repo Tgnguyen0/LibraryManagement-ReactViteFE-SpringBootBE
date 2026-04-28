@@ -57,7 +57,7 @@ function BookForm() {
     try {
       if (isEdit) await updateBook(id, book);
       else await createBook(book);
-      nav("/");
+      nav("/books");
     } finally {
       setLoading(false);
     }

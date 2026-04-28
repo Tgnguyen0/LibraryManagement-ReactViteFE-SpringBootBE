@@ -9,39 +9,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/books")
-@CrossOrigin
+@RequestMapping("/api")
 public class BookController {
 
     @Autowired
     private BookService service;
 
-    @GetMapping
+    @GetMapping("/books")
     public List<Book> getAll() {
         return service.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/books/{id}")
     public Book getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
-    @PostMapping
+    @PostMapping("/books")
     public Book create(@RequestBody @Valid Book book) {
         return service.create(book);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/books/{id}")
     public Book update(@PathVariable Long id, @RequestBody Book book) {
         return service.update(id, book);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/books/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
 
-    @GetMapping("/search")
+    @GetMapping("/books/search")
     public List<Book> search(@RequestParam String keyword) {
         return service.search(keyword);
     }
